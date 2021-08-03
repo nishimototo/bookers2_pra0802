@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def search_book
     @user = User.find(params[:user_id])
     @books = @user.books
-    create_at = params[:apple]
+    create_at = params[:created_at]
     if create_at == ""
       @search_book = "日付を入力してください"
     else
