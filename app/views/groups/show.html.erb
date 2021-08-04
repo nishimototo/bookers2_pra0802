@@ -23,14 +23,22 @@
             <td>
               <%= attachment_image_tag @group, :image, format: "jpeg", fallback: "no_image.jpg", size: "40x40" %>
             </td>
-            <td><%= @group.name, group_path(@group) %></td>
+            <td><%= link_to @group.name, group_path(@group) %></td>
             <td><%= @group.introduction %></td>
             <td>
               <% @group.users.each do |user| %>
                 <%= user.name  %>
               <% end %>
             </td>
-            <td></td>
+            <td>
+              <% if @group.owner_id != current_user.id %>
+                <% if @group.users.include?(current_user) %>
+                  <%= link_to "Leave this group", group_path(@group), method: :delete, class:"btn btn-danger btn-sm" %>
+                <% else %>
+                  <%= link_to "Join this group", group_join_path(@group), class:"btn btn-success btn-sm" %>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

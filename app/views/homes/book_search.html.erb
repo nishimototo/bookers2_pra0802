@@ -2,7 +2,7 @@
   <%= render "books/error", model: @book %>
   <div class="row">
     <div class="col-md-3">
-      <%= render "users/info", user: @user %>
+      <%= render "users/info", user: current_user %>
       <h2>New book</h2>
       <%= render "books/form", book: @book %>
     </div>
@@ -28,33 +28,17 @@
               </td>
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
-              <td><%= link_to book.category, book_search_path(keyword: book.category) %></td>
+              <td><%= book.category %></td>
               <td class="favorite_btn_<%= book.id %>">
                 <%= render "favorites/favorite", book: book %>
               </td>
               <td>
                 コメント数：<%= book.book_comments.count %>
               </td>
-              <td>
-                <div id="rate_<%= book.id %>">
-                  <script>
-                    $('#rate_<%= book.id %>').raty({
-                      size: 36,
-                      starOff: '<%= asset_path('star-off.png') %>',
-                      starOn: '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half: true,
-                      readOnly: true,
-                      score: <%= book.rate %>
-                    });
-                  </script>
-                </div>
-              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>

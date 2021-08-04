@@ -26,7 +26,6 @@
               </td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
-              <td><%= book.body %></td>
               <td><%= group.users.count %></td>
               <td>
                 <% if group.owner_id == current_user.id %>

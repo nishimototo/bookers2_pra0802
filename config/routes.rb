@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   get "search" => "searches#search"
   get "chats/:id" => "chats#show", as:"chat"
-
+  get "book_search" => "homes#book_search"
 
   resources :users do
     get "search_book" => "users#search_book"
@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :chats, only: [:create]
-  resources :groups
+  resources :groups do
+    get "join" => "groups#join"
+  end
 end
