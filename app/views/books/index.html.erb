@@ -8,6 +8,8 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
+      <%= link_to "新しい順", books_path(sort: "created_at DESC") %> |
+      <%= link_to "評価の高い順", books_path(sort: "rate DESC") %>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -39,7 +41,7 @@
                 <div id="rate_<%= book.id %>">
                   <script>
                     $('#rate_<%= book.id %>').raty({
-                      size: 36,
+                      size: 20,
                       starOff: '<%= asset_path('star-off.png') %>',
                       starOn: '<%= asset_path('star-on.png') %>',
                       starHalf: '<%= asset_path('star-half.png') %>',
